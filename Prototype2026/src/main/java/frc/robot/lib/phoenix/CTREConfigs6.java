@@ -3,6 +3,7 @@
 
 package frc.robot.lib.phoenix;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
@@ -39,7 +40,7 @@ public final class CTREConfigs6
 
     // Motor output settings
     // shooterConfig.MotorOutput.DutyCycleNeutralDeadband = 0.001;
-    shooterConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
+    shooterConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
     shooterConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
     // Open Loop settings
@@ -115,6 +116,19 @@ public final class CTREConfigs6
     // clawRollerConfig.SoftwareLimitSwitch.*
 
     return upperRollerConfig;
+  }
+
+    /****************************************************************************
+   * 
+   * kicker roller SRX attached to rs775pro
+   */
+  public static TalonFXConfiguration kickerFXConfig( )
+  {
+    TalonFXConfiguration config = new TalonFXConfiguration( );
+
+    config.CurrentLimits.SupplyCurrentLimit = 30;
+
+    return config;
   }
 
 }
